@@ -7,5 +7,3 @@ class Square:
     # Updates the probability that the EV3 is on this square
     def set_probability(self, new_probability):
         self.probability = new_probability
-    
-    

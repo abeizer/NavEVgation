@@ -14,9 +14,9 @@ Grid Class:
 from square import Square
 from color import Color
 
-class Grid:  
+class Grid:
     def __init__(self):
-        self.squares = [ 
+        self.squares = [
             [ Square(Color.RED), Square(Color.BLUE), Square(Color.GREEN), Square(Color.RED) ],
             [ Square(Color.GREEN), Square(Color.GREEN), Square(Color.RED), Square(Color.BLUE) ],
             [ Square(Color.RED), Square(Color.BLUE), Square(Color.WHITE), Square(Color.GREEN) ],

@@ -1,4 +1,8 @@
+#!/usr/bin/python3
+
 from grid import Grid
+from drive import *
+
 
 def main():
     grid = Grid()   # EV3's internal representation of the colored grid.
@@ -7,7 +11,12 @@ def main():
     for row in grid.squares:
         for s in row:
             print(s.color, " ")
-        print() 
+        print()
+
+    turnLeft()
+    turnRight()
+    advanceOneBlock()
+    stop()
 
 
 if __name__ == '__main__':
