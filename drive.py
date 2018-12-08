@@ -30,6 +30,8 @@ def turnLeft():
     Turns the robot exactly 90 DEGREES to the LEFT, exactly
     in place.
     """
+	left_motor.run_to_rel_pos(position_sp=190, speed_sp=300, stop_action="brake")
+    right_motor.run_to_rel_pos(position_sp=-190, speed_sp=300, stop_action="brake")
     print("Will eventually turn left.")
 
 
@@ -41,6 +43,8 @@ def turnRight():
     Turns the robot exactly 90 DEGREES to the RIGHT, exactly
     in place.
     """
+	left_motor.run_to_rel_pos(position_sp=-190, speed_sp=300, stop_action="brake")
+    right_motor.run_to_rel_pos(position_sp=190, speed_sp=300, stop_action="brake")
     print("Will eventually turn right.")
 
 
