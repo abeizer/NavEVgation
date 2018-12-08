@@ -7,6 +7,7 @@ We can change this later from ints to the rgb values that represent each color, 
 
 from enum import Enum
 
+
 class Color(Enum):
     BLACK = 0
     WHITE = 1

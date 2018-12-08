@@ -2,6 +2,7 @@
 
 from grid import Grid
 from drive import *
+from sense import *
 
 
 def main():
@@ -13,9 +14,10 @@ def main():
             print(s.color, " ")
         print()
 
-    turnLeft()
-    turnRight()
-    advanceOneBlock()
+    # Show basic capabilities from drive.py, some unfinished
+    turn_left()
+    turn_right()
+    move_straight()
     stop()
 
 
