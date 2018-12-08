@@ -4,6 +4,7 @@ Lego EV3 Navigation using probabilistic localization
 ## Requirements
 * [Lego Mindstorm EV3](https://www.lego.com/en-us/mindstorms/products/mindstorms-ev3-31313) with Light Sensors
 * [EV3 Python](https://sites.google.com/site/ev3devpython/introduction)
+* A square grid filled with colors as outlined under the _grid.py_ header
 
 ## Program Overview
 ### square.py
