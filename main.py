@@ -11,7 +11,7 @@ def main():
     # Confirm that we can print out the color of each square in the grid
     for row in grid.squares:
         for s in row:
-            print(s.color, " ")
+            print(s.color, " --> ", s.horizontal_neighbors[0].color, " ", s.horizontal_neighbors[1].color, " ^ ", s.vertical_neighbors[0].color, " ", s.vertical_neighbors[1].color)
         print()
 
     # Show basic capabilities from drive.py, some unfinished

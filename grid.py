@@ -54,22 +54,26 @@ class Grid:
                 #       horizontal_neighbors[0] is always the left
                 #       horizontal_neighbors[1] is always the right
                 if(row == 0):
-                    vertical_neighbors.append(None) # Right now, None represents the black border.
+                    # Right now, the Black border is represented by a Black square
+                    # Because these squares arent a part of the actual Grid, I believe
+                    # they won't mess with any of the computations. However, we definitely
+                    # need to be mindful of this or find a better way to represent the border
+                    vertical_neighbors.append(Square(Color.BLACK)) 
                 else:
                     vertical_neighbors.append(self.squares[row-1][column])
 
                 if(row == 3):
-                    vertical_neighbors.append(None)
+                    vertical_neighbors.append(Square(Color.BLACK))
                 else:
                     vertical_neighbors.append(self.squares[row+1][column])
 
                 if(column == 0):
-                    horizontal_neighbors.append(None)
+                    horizontal_neighbors.append(Square(Color.BLACK))
                 else:
                     horizontal_neighbors.append(self.squares[row][column-1])
                 
                 if(column == 3):
-                    horizontal_neighbors.append(None)
+                    horizontal_neighbors.append(Square(Color.BLACK))
                 else:
                     horizontal_neighbors.append(self.squares[row][column+1])
                 
