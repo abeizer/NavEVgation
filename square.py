@@ -2,7 +2,7 @@ class Square:
     # Constructor
     def __init__(self, color):
         self.color = color
-        self.probability = 0    # Probability is 0 at very start.
+        self.probability = 0    # Probability is 0 at very start, and should not be changed for BlACK squares
         self.vertical_neighbors = []
         self.horizontal_neighbors = []
 

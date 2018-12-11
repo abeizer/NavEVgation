@@ -78,3 +78,4 @@ class Grid:
                     horizontal_neighbors.append(self.squares[row][column+1])
                 
                 self.squares[row][column].set_neighbors(vertical_neighbors, horizontal_neighbors)
+                self.squares[row][column].set_probability(1.0/16)

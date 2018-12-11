@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 from grid import Grid
-from drive import *
-from sense import *
+#from drive import *
+#from sense import *
 
 
 def main():
@@ -11,14 +11,14 @@ def main():
     # Confirm that we can print out the color of each square in the grid
     for row in grid.squares:
         for s in row:
-            print(s.color, " --> ", s.horizontal_neighbors[0].color, " ", s.horizontal_neighbors[1].color, " ^ ", s.vertical_neighbors[0].color, " ", s.vertical_neighbors[1].color)
+            print(s.color, " --> ", s.horizontal_neighbors[0].color, " ", s.horizontal_neighbors[1].color, " ^ ", s.vertical_neighbors[0].color, " ", s.vertical_neighbors[1].color, " <-- ", s.probability)
         print()
 
     # Show basic capabilities from drive.py, some unfinished
-    turn_left()
-    turn_right()
-    move_straight()
-    stop()
+    #turn_left()
+    #turn_right()
+    #move_straight()
+    #stop()
 
 
 if __name__ == '__main__':
