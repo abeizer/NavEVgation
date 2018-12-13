@@ -42,6 +42,7 @@ class Grid:
                 # If both neighbors do not match either this square's horizontal or vertical neighbors
                 # then the robot cannot be on this square.
                 # TODO: Should the '0' probability account for the chance that a sensor reads an incorrect color?
+                # Note from Steve: If we keep track of how often we get the right color when reading, we might be able to use that probability.
                 if not s.neighbors_match(front_color, back_color):
                     s.set_probability(0.0)
                     continue
@@ -63,6 +64,23 @@ class Grid:
     # Then the grid will update all of its squares with the probability that the EV3 is occupying that square
     def update_probabilities(self, front_color, back_color):
         # TODO
+        # According to notes by Dr. Kay, we need to:
+        # 1. Get the probability of each tile as we go.
+        # 2. Add the probability to the current probability that is in the tile.
+        # 3. Add up all of the probabilities in the grid.
+        # 4. Divide each probability by that number to normalize them.
+        temp_matching = [] # for ease of going back through the list after we have the total number
+        for row in self.squares: # go through each to see which get a prob increase
+            for s in row:
+                if s.neighbors_match(front_color, back_color):
+                    temp_matching.append(s) # add them to a list
+        for s in temp_matching:
+            s.add_probability(1/len(temp_matching)) # add that probability to their current prob
+        total_prob = 0
+        for s in self.squares:
+            total_prob += s.probability # add up the probabilities of every square
+        for s in self.squares:
+            s.set_probability(s.probability/total_prob) # normalize all of the probabilities
         return None
     
     # This function will be used within the grid class to get all the colors surrounding a square at squares[x][y]

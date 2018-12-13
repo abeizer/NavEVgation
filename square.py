@@ -12,6 +12,9 @@ class Square:
     def set_probability(self, new_probability):
         self.probability = new_probability
 
+    # Added to account for the change in probability as we go
+    def add_probability(self, new_probability):
+        self.probability += new_probability
 
     # Sets the neighbors of this square when the grid is initialized
     def set_neighbors(self, vertical_neighbors, horizontal_neighbors):
