@@ -8,6 +8,7 @@ Attributes:
 Authors:
     - Katie Prochilo
     - Jason Fazio
+    - Brandon Campbel
 
 TODO:
     - Create the following functions:
@@ -26,35 +27,46 @@ right_motor = LargeMotor('outB')
 
 def turn_left():
     """
-    Tested with Katie and Steve's 2nd robot on the poster
-    grid on hardwood floor.
+    Turns the robot 90 degrees to the left relative to the robot's center.
+    In this context, the center is the robot's logic unit, which should be
+    in the middle of two squares that each have one sensor over top of them.
 
-    Turns the robot exactly 90 DEGREES to the LEFT, exactly
-    in place.
+    Note: This method is fairly consistent, but the robot's motors sometimes do
+    throw off the correct positioning of where the robot should actually end
+    up, so minor adjustments may need to be made if this causes problems.
 
-    Authors: Jason Fazio
+    Authors: Brandon Campbell
     """
-    left_motor.run_to_rel_pos(
-        position_sp=190, speed_sp=300, stop_action="brake")
-    right_motor.run_to_rel_pos(
-        position_sp=-190, speed_sp=300, stop_action="brake")
+    left_motor.run_to_rel_pos(position_sp=-150, speed_sp=200, stop_action="brake")
+    right_motor.run_to_rel_pos(position_sp=-150, speed_sp=200, stop_action="brake")
+    left_motor.wait_while('running')
+    right_motor.wait_while('running')
+    sleep(1.0)
+
+    right_motor.run_to_rel_pos(position_sp=350, speed_sp=350, stop_action="brake")
+    right_motor.wait_while('running')
 
 
 def turn_right():
     """
-    Tested with Katie and Steve's 2nd robot on the poster
-    grid on hardwood floor.
+    Turns the robot 90 degrees to the right relative to the robot's center.
+    In this context, the center is the robot's logic unit, which should be
+    in the middle of two squares that each have one sensor over top of them.
 
-    Turns the robot exactly 90 DEGREES to the RIGHT, exactly
-    in place.
+    Note: This method is fairly consistent, but the robot's motors sometimes do
+    throw off the correct positioning of where the robot should actually end
+    up, so minor adjustments may need to be made if this causes problems.
 
-    Authors: Jason Fazio
+    Authors: Brandon Campbell
     """
-    left_motor.run_to_rel_pos(
-        position_sp=-190, speed_sp=300, stop_action="brake")
-    right_motor.run_to_rel_pos(
-        position_sp=190, speed_sp=300, stop_action="brake")
+    left_motor.run_to_rel_pos(position_sp=-150, speed_sp=200, stop_action="brake")
+    right_motor.run_to_rel_pos(position_sp=-150, speed_sp=200, stop_action="brake")
+    left_motor.wait_while('running')
+    right_motor.wait_while('running')
+    sleep(1.0)
 
+    left_motor.run_to_rel_pos(position_sp=350, speed_sp=350, stop_action="brake")
+    left_motor.wait_while('running')
 
 def stop():
     """
@@ -85,12 +97,16 @@ def move_straight():
 
 def advance_one_block():
     """
-    The robot advances one block, or 3.5 inches, or until its
-    colors sensors see a change.
+    The robot advances exactly one block.
+    This has been tested on hardwood and consistently moves it the
+    required amount of distance so that it is in the same position
+    relative to the square that it just moved from.
 
-    The robot will check halfway through, at 1.75 inches, to see
-    if it is over the black border on the grid.
-
-    Authors: Katie Prochilo
+    Authors: Brandon Campbell
     """
-    print("Will eventually advance one block.")
+    left_motor.run_to_rel_pos(position_sp=175, speed_sp=175, stop_action="brake")
+    right_motor.run_to_rel_pos(position_sp=175, speed_sp=175, stop_action="brake")
+
+    # Allow both motors to finish their movements
+    left_motor.wait_while('running')
+    right_motor.wait_while('running')
