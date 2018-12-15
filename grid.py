@@ -26,6 +26,8 @@ class Grid:
 
         # Update every square in the grid with its vertical and horizontal neighbors
         self.assign_neighbors()
+        # In case we end up going back to this idea, just uncomment it
+        #self.previous_square = self.squares.copy() # start off with each square being available
 
 
     # At the very beginning of the program, we do not have any previous color data to compare
@@ -73,6 +75,10 @@ class Grid:
         for row in self.squares: # go through each to see which get a prob increase
             for s in row:
                 if s.neighbors_match(front_color, back_color):
+                    # POTENTIAL FIX: Get front_neighbor and back_neighbor readings, use:
+                    # if (front_neighbor.probability > 0 or back_neighbor.probability > 0):
+                    # that should tell us that this tile is one of the tiles we could potential move to
+                    # or maybe I'm overthinking this and that's redundant
                     temp_matching.append(s) # add them to a list
         for s in temp_matching:
             s.add_probability(1/len(temp_matching)) # add that probability to their current prob
@@ -82,6 +88,16 @@ class Grid:
         for s in self.squares:
             s.set_probability(s.probability/total_prob) # normalize all of the probabilities
         return None
+
+    # In case we end up going back to this idea, just uncomment it
+    #def update_probabilities(self, front_color, back_color): # takes in a color that we see and shortens our list
+    #    tempList = []
+    #    for r in self.previous_squares:
+    #        if r.neighbors_match(front_color, back_color):
+    #            tempList.append(r)
+    #    if len(tempList) == 0:
+    #        raise Exception("Error, no matches found")
+    #    self.previous_squares = tempList # assuming all went well, reassign to our new shortened list
     
     # This function will be used within the grid class to get all the colors surrounding a square at squares[x][y]
     # The EV3 can be oriented in two directions: 
