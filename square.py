@@ -2,7 +2,8 @@ class Square:
     # Constructor
     def __init__(self, color, row=-1, column=-1):
         self.color = color
-        self.probability = 0.0    # Probability is 0 at very start, and should not be changed for BlACK squares
+        # Probability is 0 at very start, and should not be changed for BlACK squares
+        self.probability = 0.0
         self.row = row
         self.column = column
         self.vertical_neighbors = []
@@ -12,8 +13,8 @@ class Square:
     def set_probability(self, new_probability):
         self.probability = new_probability
 
-
     # Sets the neighbors of this square when the grid is initialized
+
     def set_neighbors(self, vertical_neighbors, horizontal_neighbors):
         self.vertical_neighbors = vertical_neighbors
         self.horizontal_neighbors = horizontal_neighbors
@@ -27,14 +28,13 @@ class Square:
         if(self.horizontal_neighbors[1].color == front_color):
             if(self.horizontal_neighbors[0].color == back_color):
                 return True
-        
+
         if(self.vertical_neighbors[0].color == front_color):
             if(self.vertical_neighbors[1].color == back_color):
                 return True
-        
+
         if(self.vertical_neighbors[1].color == front_color):
             if(self.vertical_neighbors[0].color == back_color):
                 return True
-        
-        return False
 
+        return False

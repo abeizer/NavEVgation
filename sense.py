@@ -6,6 +6,7 @@ Attributes:
 
 Authors:
     - Katie Prochilo
+    - Brandon Campbell
 
 TODO:
     - Decide how exactly we want to measure and track color
@@ -22,11 +23,3 @@ front_cs = ColorSensor('in1')
 back_cs = ColorSensor('in2')
 front_cs.mode = 'RGB-RAW'
 back_cs.mode = 'RBG-RAW'
-
-
-def get_rgb():
-    print("This will eventually get the RGB values a sensory reads")
-
-
-def is_over_color(color_measurement, current_measurement):
-    print("This will eventually get the RGB values a sensory reads")

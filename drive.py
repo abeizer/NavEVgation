@@ -8,13 +8,13 @@ Attributes:
 Authors:
     - Katie Prochilo
     - Jason Fazio
+    - Brandon Campbell
 
 TODO:
     - Create the following functions:
         * advanceOneBlock()
-    - Test the following functions:
-        * turnLeft()
-        * turnRight()
+    - Convert move_straight() to drive based on distance,
+    rather than a certain amount of time.
 '''
 
 from ev3dev.ev3 import *
@@ -26,13 +26,10 @@ right_motor = LargeMotor('outB')
 
 def turn_left():
     """
-    Tested with Katie and Steve's 2nd robot on the poster
-    grid on hardwood floor.
-
     Turns the robot exactly 90 DEGREES to the LEFT, exactly
     in place.
 
-    Authors: Jason Fazio
+    Authors and testers: Jason Fazio, Brandon Campbell
     """
     left_motor.run_to_rel_pos(
         position_sp=190, speed_sp=300, stop_action="brake")
@@ -42,13 +39,10 @@ def turn_left():
 
 def turn_right():
     """
-    Tested with Katie and Steve's 2nd robot on the poster
-    grid on hardwood floor.
-
     Turns the robot exactly 90 DEGREES to the RIGHT, exactly
     in place.
 
-    Authors: Jason Fazio
+    Authors and testers: Jason Fazio, Brandon Campbell
     """
     left_motor.run_to_rel_pos(
         position_sp=-190, speed_sp=300, stop_action="brake")
@@ -60,7 +54,7 @@ def stop():
     """
     Both motors stop and both wheels brake to a stop.
 
-    Authors: Katie Prochilo
+    Authors and testers: Katie Prochilo
     """
     left_motor.stop()
     right_motor.stop()
@@ -73,7 +67,7 @@ def move_straight():
 
     For speed to be sp=700, each wheel needs 50% of that speed
 
-    Authors: Katie Prochilo
+    Authors and testers: Katie Prochilo
     """
     left_motor.run_timed(time_sp=200, speed_sp=200)
     right_motor.run_timed(time_sp=200, speed_sp=200)
@@ -85,12 +79,14 @@ def move_straight():
 
 def advance_one_block():
     """
+    TODO: Still needs to be written.
+
     The robot advances one block, or 3.5 inches, or until its
     colors sensors see a change.
 
     The robot will check halfway through, at 1.75 inches, to see
     if it is over the black border on the grid.
 
-    Authors: Katie Prochilo
+    Authors: TODO
     """
     print("Will eventually advance one block.")

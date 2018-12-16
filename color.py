@@ -14,4 +14,3 @@ class Color(Enum):
     GREEN = 3
     RED = 5
     WHITE = 6
-    
