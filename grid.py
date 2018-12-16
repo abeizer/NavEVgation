@@ -41,7 +41,6 @@ class Grid:
             for s in row:
                 # If both neighbors do not match either this square's horizontal or vertical neighbors
                 # then the robot cannot be on this square.
-                # TODO: Should the '0' probability account for the chance that a sensor reads an incorrect color?
                 if not s.neighbors_match(front_color, back_color):
                     s.set_probability(0.0)
                     continue
@@ -63,9 +62,10 @@ class Grid:
     # and compare them to the colors it saw in the last color checking phase.
     # Then the grid will update all of its squares with the probability that the EV3 is occupying that square
     def update_probabilities(self, previous_front_color, previous_back_color, front_color, back_color):
+
         # Store a list of squares EV3 could possibly be on
         viable_squares = []
-
+        
         for row in self.squares:
             for s in row:
                 # If the current square does not have neighbors that match, then EV3 cannot be on that square
@@ -93,6 +93,7 @@ class Grid:
             s.set_probability(1/len(viable_squares))
 
         return viable_squares[0].row, viable_squares[0].column
+
     
     # This function will be used within the grid class to get all the colors surrounding a square at squares[x][y]
     # The EV3 can be oriented in two directions: 
