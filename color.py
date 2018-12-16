@@ -2,7 +2,7 @@
 This Color enum is used for consistency throughout the rest of the program.
 Any values used to represent the colors will all agree with this enum.
 
-We can change this later from ints to the rgb values that represent each color, if that seems like a good idea
+Author: Abby Beizer
 '''
 
 from enum import Enum

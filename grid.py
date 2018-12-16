@@ -8,6 +8,7 @@ Grid Class:
     | red   | blue  | white | green |
     | green | red   | red   | blue  |
 
+Authors: Abby Beizer, Steve MacDonald
 '''
 
 

@@ -1,3 +1,6 @@
+'''
+Authors: Abby Beizer, Steve MacDonald
+'''
 class Square:
     # Constructor
     def __init__(self, color, row=-1, column=-1):
