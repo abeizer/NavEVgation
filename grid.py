@@ -58,12 +58,45 @@ class Grid:
         # so just return the first square in the list
         return viable_squares[0].row, viable_squares[0].column
 
+
     # This function will allow the EV3 to pass in the colors it sees in front of it and behind it
     # and compare them to the colors it saw in the last color checking phase.
     # Then the grid will update all of its squares with the probability that the EV3 is occupying that square
-    def update_probabilities(self, front_color, back_color):
-        # TODO
-        return None
+    def update_probabilities(self, previous_front_color, previous_back_color, front_color, back_color):
+        # Store a list of squares EV3 could possibly be on
+        viable_squares = []
+
+        for row in self.squares:
+            for s in row:
+                # If the current square does not have neighbors that match, then EV3 cannot be on that square
+                # Assign probability of 0 and move to the next square
+                if not s.neighbors_match(front_color, back_color):
+                    s.probability = 0.0
+                    continue
+
+                # If the neighbors of this square match, we then need to check the neighbors of the previous squares
+                # For this, we are basically asking the question "is it possible for EV3 to have moved onto this square from the previous one?"
+                #      
+                # In order for a square to be a viable position, both of its neighbors (either horizontal or vertical)
+                # must have their own neighbors that match the old sensor readings.
+                if s.horizontal_neighbors[0].neighbors_match(previous_back_color) and s.horizontal_neighbors[1].neighbors_match(previous_front_color):
+                    viable_squares.append(s)
+                elif s.horizontal_neighbors[1].neighbors_match(previous_back_color) and s.horizontal_neighbors[0].neighbors_match(previous_front_color):
+                    viable_squares.append(s)
+                elif s.vertical_neighbors[0].neighbors_match(previous_back_color) and s.vertical_neighbors[1].neighbors_match(previous_front_color):
+                    viable_squares.append(s)
+                elif s.vertical_neighbors[1].neighbors_match(previous_back_color) and s.vertical_neighbors[0].neighbors_match(previous_front_color):
+                    viable_squares.append(s)
+                else:
+                    s.probability = 0.0
+
+        if len(viable_squares == 0):
+            raise Exception("No viable options detected for starting square")
+
+        for s in viable_squares:
+            s.set_probability(1/len(viable_squares))
+
+        return viable_squares[0].row, viable_squares[0].column
     
     # This function will be used within the grid class to get all the colors surrounding a square at squares[x][y]
     # The EV3 can be oriented in two directions: 
