@@ -42,13 +42,12 @@ def print_init_grid_probs(myGrid):
 
     
 
-
-#def drive_example():
+def drive_example():
     # Show basic capabilities from drive.py, some unfinished
-    #turn_left()
-    #turn_right()
-    #move_straight()
-    #stop()
+    # turn_left()
+    # turn_right()
+    # move_straight()
+    # stop()
 
 if __name__ == '__main__':
     main()
