@@ -93,7 +93,6 @@ class Grid:
             s.set_probability(1/len(viable_squares))
 
         return viable_squares[0].row, viable_squares[0].column
-
     
     # This function will be used within the grid class to get all the colors surrounding a square at squares[x][y]
     # The EV3 can be oriented in two directions: 

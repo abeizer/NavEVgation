@@ -31,7 +31,7 @@ def main():
     print(grid.squares[x][y].color, " --> ", grid.squares[x][y].probability)
     print()
 
-
+    
 def print_init_grid_probs(myGrid):
     for row in myGrid.squares:
         for s in row:
