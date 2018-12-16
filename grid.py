@@ -79,18 +79,14 @@ class Grid:
                 #      
                 # In order for a square to be a viable position, both of its neighbors (either horizontal or vertical)
                 # must have their own neighbors that match the old sensor readings.
-                if s.horizontal_neighbors[0].neighbors_match(previous_back_color) and s.horizontal_neighbors[1].neighbors_match(previous_front_color):
+                if s.horizontal_neighbors[0].neighbors_match(previous_front_color, previous_back_color) or s.horizontal_neighbors[1].neighbors_match(previous_front_color, previous_back_color):
                     viable_squares.append(s)
-                elif s.horizontal_neighbors[1].neighbors_match(previous_back_color) and s.horizontal_neighbors[0].neighbors_match(previous_front_color):
-                    viable_squares.append(s)
-                elif s.vertical_neighbors[0].neighbors_match(previous_back_color) and s.vertical_neighbors[1].neighbors_match(previous_front_color):
-                    viable_squares.append(s)
-                elif s.vertical_neighbors[1].neighbors_match(previous_back_color) and s.vertical_neighbors[0].neighbors_match(previous_front_color):
+                elif s.vertical_neighbors[0].neighbors_match(previous_front_color, previous_back_color) or s.vertical_neighbors[1].neighbors_match(previous_front_color, previous_back_color):
                     viable_squares.append(s)
                 else:
                     s.probability = 0.0
 
-        if len(viable_squares == 0):
+        if len(viable_squares) == 0:
             raise Exception("No viable options detected for starting square")
 
         for s in viable_squares:
