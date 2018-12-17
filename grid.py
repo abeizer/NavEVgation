@@ -100,6 +100,36 @@ class Grid:
 
         return viable_squares[0].row, viable_squares[0].column
 
+
+    # Function for determining orientation
+    def orientaion(self, front_color):
+        orientation = "UP" # random starting string direction to give it
+        if len(self.viable_squares) == 0:
+            raise Exception("Cannot determine orientation, robot could be anywhere")
+        sFront = self.viable_squares[0] # grab the first viable square on the list and just assume we are there
+        if (front_color == sFront.horizontal_neighbors[0] or front_color == sFront.horizontal_neighbors[1]): # if they are on the sides
+            if (sFront.horizontal_neighbors[0].column > sFront.column): # checking if first neighbor is on the right
+                if (sFront.horizontal_neighbors[0].color == front_color): # if this is the right one
+                    orientation = "RIGHT"
+                else:
+                    orientation = "LEFT"
+            elif (sFront.horizontal_neighbors[1].color == front_color): # if first neighbor wasn't on right, second one must be
+                orientation = "RIGHT"
+            else: # checked both horizontal neighbors already to see if the color on the right is our front
+                orientation = "LEFT" # all of those fail, but we know it's horizontal neighbor, so must be left
+        elif (sFront.vertical_neighbors[0].row > sFront.row): # not horizontal, must be vertical
+            if (sFront.vertical_neighbors[0].color == front_color):
+                orientation = "UP"
+            else:
+                orientation = "DOWN"
+        elif (sFront.vertical_neighbors[1].color == front_color):
+            orientation = "UP"
+        else:
+            orientation = "DOWN"
+
+        return orientation
+    ####### SCRATCH WORK. MIGHT NOT REALLY USE, BUT IN ANY CASE SHOULD RETURN A STRING ANSWER TO ITS ORIENTATION VERY CONFUSING LOOKING #####
+
     # This function will be used within the grid class to get all the colors surrounding a square at squares[x][y]
     # The EV3 can be oriented in two directions:
     #   1. With sensors seeing the neighbors above and below the square
