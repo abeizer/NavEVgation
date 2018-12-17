@@ -2,7 +2,7 @@
 
 from grid import Grid
 from color import Color
-
+from drive import Drive
 
 def main():
     grid = Grid()   # EV3's internal representation of the colored grid.
@@ -68,7 +68,7 @@ def move_sequence_example(myGrid, start_row, start_col):
     get_next_move(myGrid, start_row, start_col)
 
 
-def get_next_move(myGrid, row, col):
+def get_next_move(self, myGrid, row, col):
     """
     TODO: Eventually it will actually call the drive
     function rather than printing. To do this, the robot needs to know its orientation.
@@ -81,7 +81,7 @@ def get_next_move(myGrid, row, col):
 
     The END square is hard coded at coordinate (2,2)
 
-    Authors: Katie Prochilo
+    Authors: Katie Prochilo, Jason Fazio
     """
     # The robot is on white. Run is over.
     if (row == 2 and col == 2):
@@ -92,17 +92,24 @@ def get_next_move(myGrid, row, col):
         if (col > 2):
             col -= 1
             print("\nGo left:")
+			self.turn_left()
+			self.rotate_right()
+
         else:
             col += 1
             print("\nGo right:")
+			self.turn_right()
+			self.rotate_left()
     # The robot is below the goal.
     elif (row > 2):
         row -= 1
         print("\nGo up:")
+		self.advance_one_block()
     # The robot is above the goal.clear
     else:
         row += 1
         print("\nGo down:")
+		self.advance_backwards_one_block()
     print_grid_coord(myGrid, row, col)
     get_next_move(myGrid, row, col)
 
