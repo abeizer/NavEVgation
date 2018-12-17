@@ -109,3 +109,46 @@ def advance_one_block():
     # Allow both motors to finish their movements
     left_motor.wait_while('running')
     right_motor.wait_while('running')
+	
+def advance_backwards_one_block():
+	"""
+	The robot does the same as advance one block
+	only in the negative direction
+	this will be easier than turning around.
+	
+	Authors: Jason Fazio
+	"""
+	left_motor.run_to_rel_pos(position_sp=-175, speed_sp=175, stop_action="brake")
+    right_motor.run_to_rel_pos(position_sp=-175, speed_sp=175, stop_action="brake")
+
+    # Allow both motors to finish their movements
+    left_motor.wait_while('running')
+    right_motor.wait_while('running')
+	
+def rotate_right():
+	"""
+	This is used to get the robot to turn back to the top of the board 
+	So that the orientation will stay in the same direction
+	
+	Authors: Jason Fazio
+	"""
+	left_motor.run_to_rel_pos(position_sp=190, speed_sp=300, stop_action="brake")
+    right_motor.run_to_rel_pos(position_sp=-190, speed_sp=300, stop_action="brake")
+	
+	# Allow both motors to finish their movements
+    left_motor.wait_while('running')
+    right_motor.wait_while('running')
+	
+def rotate_left():
+	"""
+	This is used to get the robot to turn back to the top of the board
+	So that the orientation will stay in the same direction
+	
+	Authors: Jason Fazio
+	"""
+	left_motor.run_to_rel_pos(position_sp=-190, speed_sp=300, stop_action="brake")
+    right_motor.run_to_rel_pos(position_sp=190, speed_sp=300, stop_action="brake")
+	
+	# Allow both motors to finish their movements
+    left_motor.wait_while('running')
+    right_motor.wait_while('running')
