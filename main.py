@@ -2,20 +2,19 @@
 
 from grid import Grid
 from color import Color
-# from sense import *
 
 
 def main():
     grid = Grid()   # EV3's internal representation of the colored grid.
 
     # Confirm that we can print out the color of each square in the grid
-    print_init_grid_probs(grid)
+    # print_init_grid_probs(grid)
 
     # A simulation of the moves the robot will make
-    move_sequence_example(grid)
+    move_sequence_example(grid, 0, 1)
 
-    print(grid.determine_starting_position(Color.GREEN, Color.RED))
-    print(grid.squares[0][1].color, " --> ", grid.squares[0][1].probability)
+    # print(grid.determine_starting_position(Color.GREEN, Color.RED))
+    # print(grid.squares[0][1].color, " --> ", grid.squares[0][1].probability)
 
     # Examples from various classes
     # drive_example()
@@ -31,37 +30,34 @@ def print_init_grid_probs(myGrid):
     print()
 
 
-def move_sequence_example(myGrid):
+def move_sequence_example(myGrid, start_row, start_col):
     """
     This function will walk through a sample run of the
     program, but will hardcode in the actual movement.
 
     Authors: Katie Prochilo
     """
+    if (start_row > 3 or start_row < 0 or start_col > 3 or start_col < 0):
+        print("The starting row or column is out of range.")
+        return
     # Let's say the robot starts at row 0, col 1.
     print("Here's how the robot starts:")
-    print_grid_coord(myGrid, 0, 1)
+    # Here's the grid showing where the robot is at
+    print_grid_coord(myGrid, start_row, start_col)
     # Now what's the first move to find white
-    get_next_move(myGrid, 0, 1)
-    # According to the algorithm, go down one row
-    get_next_move(myGrid, 1, 1)
-    # Now we're in the correct row, so go right
-    get_next_move(myGrid, 1, 2)
-    # We should find we're at the goal
-    get_next_move(myGrid, 2, 2)
+    get_next_move(myGrid, start_row, start_col)
 
 
 def get_next_move(myGrid, row, col):
     """
-    TODO: For now this will print the move the robot will make
-    next, but eventually it will actually call the drive
-    function. To do this, the robot needs to know its orientation.
+    TODO: Eventually it will actually call the drive
+    function rather than printing. To do this, the robot needs to know its orientation.
 
     Before this function is called, the program will have a
     single square where it thinks it is most likely to be.
 
     The function will print the grid using print_grid_options()
-    before also printing the next move, i.e. "Turn left."
+    before also printing the next move, i.e. "Go left."
 
     The END square is hard coded at coordinate (2,2)
 
@@ -69,7 +65,8 @@ def get_next_move(myGrid, row, col):
     """
     # The robot is on white. Run is over.
     if (row == 2 and col == 2):
-        print("\nThe robot is on white. THE END:")
+        print("The robot is on white. THE END.")
+        return
     # The robot is on the proper row but not column.
     elif (row == 2):
         if (col > 2):
@@ -82,11 +79,12 @@ def get_next_move(myGrid, row, col):
     elif (row > 2):
         row -= 1
         print("\nGo up:")
-    # The robot is above the goal.
+    # The robot is above the goal.clear
     else:
         row += 1
         print("\nGo down:")
     print_grid_coord(myGrid, row, col)
+    get_next_move(myGrid, row, col)
 
 
 def print_grid_coord(myGrid, myRow, myCol):
