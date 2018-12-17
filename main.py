@@ -2,7 +2,6 @@
 
 from grid import Grid
 from color import Color
-# from drive import *
 # from sense import *
 
 
@@ -12,7 +11,8 @@ def main():
     # Confirm that we can print out the color of each square in the grid
     print_init_grid_probs(grid)
 
-    print_grid_options(grid, 2, 2)
+    # A simulation of the moves the robot will make
+    move_sequence_example(grid)
 
     print(grid.determine_starting_position(Color.GREEN, Color.RED))
     print(grid.squares[0][1].color, " --> ", grid.squares[0][1].probability)
@@ -31,17 +31,31 @@ def print_init_grid_probs(myGrid):
     print()
 
 
-# def drive_example():
-    # Show basic capabilities from drive.py, some unfinished
-    # turn_left()
-    # turn_right()
-    # move_straight()
-    # stop()
+def move_sequence_example(myGrid):
+    """
+    This function will walk through a sample run of the
+    program, but will hardcode in the actual movement.
+
+    Authors: Katie Prochilo
+    """
+    # Let's say the robot starts at row 0, col 1.
+    print("Here's how the robot starts:")
+    print_grid_coord(myGrid, 0, 1)
+    # Now what's the first move to find white
+    get_next_move(myGrid, 0, 1)
+    # According to the algorithm, go down one row
+    get_next_move(myGrid, 1, 1)
+    # Now we're in the correct row, so go right
+    get_next_move(myGrid, 1, 2)
+    # We should find we're at the goal
+    get_next_move(myGrid, 2, 2)
 
 
 def get_next_move(myGrid, row, col):
     """
-    TODO: Still needs to be written.
+    TODO: For now this will print the move the robot will make
+    next, but eventually it will actually call the drive
+    function. To do this, the robot needs to know its orientation.
 
     Before this function is called, the program will have a
     single square where it thinks it is most likely to be.
@@ -49,14 +63,33 @@ def get_next_move(myGrid, row, col):
     The function will print the grid using print_grid_options()
     before also printing the next move, i.e. "Turn left."
 
-    Finally, the function will call the proper drive function.
+    The END square is hard coded at coordinate (2,2)
 
     Authors: Katie Prochilo
     """
-    print(myGrid)
+    # The robot is on white. Run is over.
+    if (row == 2 and col == 2):
+        print("\nThe robot is on white. THE END:")
+    # The robot is on the proper row but not column.
+    elif (row == 2):
+        if (col > 2):
+            col -= 1
+            print("\nGo left:")
+        else:
+            col += 1
+            print("\nGo right:")
+    # The robot is below the goal.
+    elif (row > 2):
+        row -= 1
+        print("\nGo up:")
+    # The robot is above the goal.
+    else:
+        row += 1
+        print("\nGo down:")
+    print_grid_coord(myGrid, row, col)
 
 
-def print_grid_options(myGrid, myRow, myCol):
+def print_grid_coord(myGrid, myRow, myCol):
     """
     Prints a grid containing an 'X' in the square
     with coordinates (myRow, myCol)
