@@ -1,3 +1,6 @@
+'''
+Authors: Abby Beizer, Steve MacDonald
+'''
 class Square:
     # Constructor
     def __init__(self, color, row=-1, column=-1):
@@ -21,6 +24,10 @@ class Square:
 
     # returns true if the front and back sensors each see colors that both match either the horizontal or vertical neighbors
     def neighbors_match(self, front_color, back_color):
+        if len(self.vertical_neighbors) == 0 or len(self.horizontal_neighbors) == 0:
+            # This only happens if the square represents the border
+            return False
+
         if(self.horizontal_neighbors[0].color == front_color):
             if(self.horizontal_neighbors[1].color == back_color):
                 return True
