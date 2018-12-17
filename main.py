@@ -8,19 +8,19 @@ def main():
     grid = Grid()   # EV3's internal representation of the colored grid.
 
     # Confirm that we can print out the color of each square in the grid
-    # print_init_grid_probs(grid)
+    print_init_grid_probs(grid)
 
     # A simulation of the moves the robot will make
     move_sequence_example(grid, 0, 1)
 
-    # print(grid.determine_starting_position(Color.GREEN, Color.RED))
-    # print(grid.squares[0][1].color, " --> ", grid.squares[0][1].probability)
-
-    # Examples from various classes
-    # drive_example()
+    print(grid.determine_starting_position(Color.GREEN, Color.RED))
+    print(grid.squares[0][1].color, " --> ", grid.squares[0][1].probability)
 
 
 def print_init_grid_probs(myGrid):
+    """
+    Authors: Abby Beizer
+    """
     # Confirm that we can print out the color of each square in the grid
     for row in myGrid.squares:
         for s in row:
