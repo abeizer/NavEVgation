@@ -7,6 +7,7 @@ Authors:
     - Katie Prochilo
     - Jason Fazio
     - Brandon Campbell
+	- Joe Hammer
 
 TODO:
     - Create the following functions:
@@ -32,7 +33,7 @@ def turn_left():
     throw off the correct positioning of where the robot should actually end
     up, so minor adjustments may need to be made if this causes problems.
 
-    Authors and testers: Jason Fazio, Brandon Campbell
+    Authors and testers: Jason Fazio, Joe Hammer, Brandon Campbell
     """
     left_motor.run_to_rel_pos(position_sp=-150, speed_sp=200, stop_action="brake")
     right_motor.run_to_rel_pos(position_sp=-150, speed_sp=200, stop_action="brake")
@@ -54,7 +55,7 @@ def turn_right():
     throw off the correct positioning of where the robot should actually end
     up, so minor adjustments may need to be made if this causes problems.
 
-    Authors and testers: Jason Fazio, Brandon Campbell
+    Authors and testers: Jason Fazio, Joe Hammer, Brandon Campbell
     """
     left_motor.run_to_rel_pos(position_sp=-150, speed_sp=200, stop_action="brake")
     right_motor.run_to_rel_pos(position_sp=-150, speed_sp=200, stop_action="brake")
@@ -114,7 +115,7 @@ def advance_backwards_one_block():
 	only in the negative direction
 	this will be easier than turning around.
 	
-	Authors: Jason Fazio
+	Authors: Jason Fazio, Joe Hammer
 	"""
 	left_motor.run_to_rel_pos(position_sp=-175, speed_sp=175, stop_action="brake")
 	right_motor.run_to_rel_pos(position_sp=-175, speed_sp=175, stop_action="brake")
@@ -128,7 +129,7 @@ def rotate_right():
 	This is used to get the robot to turn back to the top of the board 
 	So that the orientation will stay in the same direction
 	
-	Authors: Jason Fazio
+	Authors: Jason Fazio, Joe Hammer
 	"""
 	left_motor.run_to_rel_pos(position_sp=190, speed_sp=300, stop_action="brake")
 	right_motor.run_to_rel_pos(position_sp=-190, speed_sp=300, stop_action="brake")
@@ -142,7 +143,7 @@ def rotate_left():
 	This is used to get the robot to turn back to the top of the board
 	So that the orientation will stay in the same direction
 	
-	Authors: Jason Fazio
+	Authors: Jason Fazio, Joe Hammer
 	"""
 	left_motor.run_to_rel_pos(position_sp=-190, speed_sp=300, stop_action="brake")
 	right_motor.run_to_rel_pos(position_sp=190, speed_sp=300, stop_action="brake")
