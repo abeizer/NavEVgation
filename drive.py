@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 '''
 Attributes:
     - left_motor - powers the left wheel
