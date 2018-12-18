@@ -19,7 +19,14 @@ back_cs.mode = 'COL-COLOR'
 
 
 def get_front_enum():
-    return Color(front_cs.value())
+    val = front_cs.value()
+    if (val == 0):
+        return Color.BLACK
+    return Color(val)
+
 
 def get_rear_enum():
-    return Color(back_cs.value())
+    val = back_cs.value()
+    if (val == 0):
+        return Color.BLACK
+    return Color(val)
