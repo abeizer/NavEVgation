@@ -1,7 +1,6 @@
 '''
 Attributes:
-    front_cs - color sensor attached to the robot's front
-    back_cs - color sensor attached to the robot's back
+    -
 
 Authors:
     - Katie Prochilo
@@ -19,8 +18,8 @@ front_cs.mode = 'COL-COLOR'
 back_cs.mode = 'COL-COLOR'
 
 
-def get_rgb(sensor):
-    """
-    Authors: Brandon Campbell
-    """
-    return Color(sensor.value())
+def get_front_enum():
+    return Color(front_cs.value())
+
+def get_rear_enum():
+    return Color(back_cs.value())
