@@ -3,6 +3,7 @@
 from grid import Grid
 from color import Color
 from drive import Drive
+from sense import *
 
 
 def main():
@@ -60,11 +61,13 @@ def navigate_to_white(self, myGrid):
     Authors: Katie Prochilo
     """
     # Get the current values the color sensor sees
-    front_val = get_rgb(sensor)
-    back_val = get_rgb()
+    front = front_cs
+    back = back_cs
+    front_val = get_rgb(front)
+    back_val = get_rgb(back)
+
     # Get the best guess of the robot's starting position as row, col
     start_row, start_col = myGrid.determine_starting_position(self, front_val, back_val)
-
     # Check that row and col are in range
     if (start_row > 3 or start_row < 0 or start_col > 3 or start_col < 0):
         print("The starting row or column is out of range.")
