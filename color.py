@@ -1,6 +1,7 @@
 '''
-This Color enum is used for consistency throughout the rest of the program.
-Any values used to represent the colors will all agree with this enum.
+This Color enum is used for consistency throughout the rest of
+the program. Any values used to represent the colors will all
+agree with this enum.
 
 Author: Abby Beizer
 '''

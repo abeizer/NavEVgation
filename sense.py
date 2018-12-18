@@ -1,7 +1,4 @@
 '''
-Attributes:
-    -
-
 Authors:
     - Katie Prochilo
     - Brandon Campbell

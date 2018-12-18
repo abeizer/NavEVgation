@@ -1,7 +1,8 @@
 '''
 Grid Class:
 
-    A representation of the colored grid that EV3 will use for navigation
+    A representation of the colored grid that EV3 willuse for
+    navigation
 
     | red   | blue  | green | red   |
     | green | green | red   | blue  |
@@ -18,7 +19,9 @@ from color import Color
 
 class Grid:
     def __init__(self):
-        # Create the grid of squares
+        """
+        Create the grid of squares.
+        """
         self.squares = [
             [Square(Color.RED, 0, 0), Square(Color.BLUE, 0, 1),
              Square(Color.GREEN, 0, 2), Square(Color.RED, 0, 3)],
@@ -30,22 +33,27 @@ class Grid:
              Square(Color.RED, 3, 2), Square(Color.BLUE, 3, 3)]
         ]
 
-        # Update every square in the grid with its vertical and horizontal neighbors
+        # Update every square in the grid with its vertical and
+        # horizontal neighbors
         self.assign_neighbors()
 
-    # At the very beginning of the program, we do not have any previous color data to compare
-    # to the currently-observed colors.
+    # At the very beginning of the program, we do not have any
+    # previous color data to compare to the currently-observed
+    # colors.
 
     def determine_starting_position(self, front_color, back_color):
         viable_squares = []
 
-        # for each square, check to see if its horizontal_neighbors or vertical_neighbors match the curent sensors readings
-        # if the neighbors do not match up to the sensor readins, set that squares' probability to 0
-        # if the neighbors match, then the square is a viable possibility.
-        #   Add that square to a list of viable options
+        # For each square, check to see if its horizontal_neighbors
+        # or vertical_neighbors match the curent sensors readings.
+        # If the neighbors do not match up to the sensor readins,
+        # set that squares' probability to 0. If the neighbors match,
+        # then the square is a viable possibility. Add that square to
+        # a list of viable options.
         for row in self.squares:
             for s in row:
-                # If both neighbors do not match either this square's horizontal or vertical neighbors
+                # If both neighbors do not match either this
+                # square's horizontal or vertical neighbors
                 # then the robot cannot be on this square.
                 if not s.neighbors_match(front_color, back_color):
                     s.set_probability(0.0)
@@ -59,13 +67,16 @@ class Grid:
         for s in viable_squares:
             s.set_probability(1/len(viable_squares))
 
-        # if the list contains more than one square, then their probabilities will be the same for starting position.
+        # if the list contains more than one square, then their
+        # probabilities will be the same for starting position.
         # so just return the first square in the list
         return viable_squares[0].row, viable_squares[0].column
 
-    # This function will allow the EV3 to pass in the colors it sees in front of it and behind it
-    # and compare them to the colors it saw in the last color checking phase.
-    # Then the grid will update all of its squares with the probability that the EV3 is occupying that square
+    # This function will allow the EV3 to pass in the colors it
+    # sees in front of it and behind it and compare them to the
+    # colors it saw in the last color checking phase. Then the
+    # grid will update all of its squares with the probability
+    # that the EV3 is occupying that square
 
     def update_probabilities(self, previous_front_color, previous_back_color, front_color, back_color):
 
