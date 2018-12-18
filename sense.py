@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 '''
 Attributes:
     -
@@ -7,13 +5,6 @@ Attributes:
 Authors:
     - Katie Prochilo
     - Brandon Campbell
-
-TODO:
-    - Decide how exactly we want to measure and track color
-    - Create the following functions:
-        * get_rgb()
-        * is_over_color(color_measurement, current_measurement)
-    - Test the following functions:
 '''
 
 from ev3dev.ev3 import *

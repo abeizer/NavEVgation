@@ -4,21 +4,23 @@ from grid import Grid
 from color import Color
 from drive import Drive
 
+
 def main():
-    grid = Grid()   # EV3's internal representation of the colored grid.
+    """
+    Authors: Abby Beizer, Katie Prochilo
+    """
+    # EV3's internal representation of the colored grid.
+    grid = Grid()
+    # Navigate the robot to the end square
+    navigate_to_white(self, grid)
 
-    # Confirm that we can print out the color of each square in the grid
-    # print_init_grid_probs(grid)
 
-    # A simulation of the moves the robot will make
-    move_sequence_example(grid, 0, 1)
-
+def print_probs(grid):
+    """
+    Authors: Abby Beizer
+    """
     print(grid.determine_starting_position(Color.GREEN, Color.RED))
     print(grid.squares[0][1].color, " --> ", grid.squares[0][1].probability)
-
-    # Test update_probabilities
-    # Pretend we start on square(0,1) and are moving from square(0,1) to square(0,2)
-    # And then from square(0,2) to square(1,2)
 
     x, y = grid.determine_starting_position(Color.GREEN, Color.RED)
     print("[", x, ",", y, "]")
@@ -50,22 +52,30 @@ def print_init_grid_probs(myGrid):
     print()
 
 
-def move_sequence_example(myGrid, start_row, start_col):
+def navigate_to_white(self, myGrid):
     """
     This function will walk through a sample run of the
     program, but will hardcode in the actual movement.
 
     Authors: Katie Prochilo
     """
+    # Get the current values the color sensor sees
+    front_val = 0
+    back_val = 0
+    # Get the best guess of the robot's starting position as row, col
+    start_row, start_col = myGrid.determine_starting_position(self, front_val, back_val)
+
+    # Check that row and col are in range
     if (start_row > 3 or start_row < 0 or start_col > 3 or start_col < 0):
         print("The starting row or column is out of range.")
         return
+
     # Let's say the robot starts at row 0, col 1.
     print("Here's how the robot starts:")
     # Here's the grid showing where the robot is at
     print_grid_coord(myGrid, start_row, start_col)
     # Now what's the first move to find white
-    get_next_move(myGrid, start_row, start_col)
+    get_next_move(self, myGrid, start_row, start_col)
 
 
 def get_next_move(self, myGrid, row, col):
@@ -92,26 +102,26 @@ def get_next_move(self, myGrid, row, col):
         if (col > 2):
             col -= 1
             print("\nGo left:")
-			self.turn_left()
-			self.rotate_right()
+            self.turn_left()
+            self.rotate_right()
 
         else:
             col += 1
             print("\nGo right:")
-			self.turn_right()
-			self.rotate_left()
+            self.turn_right()
+            self.rotate_left()
     # The robot is below the goal.
     elif (row > 2):
         row -= 1
         print("\nGo up:")
-		self.advance_one_block()
-    # The robot is above the goal.clear
+        self.advance_one_block()
+    # The robot is above the goal.
     else:
         row += 1
         print("\nGo down:")
-		self.advance_backwards_one_block()
+        self.advance_backwards_one_block()
     print_grid_coord(myGrid, row, col)
-    get_next_move(myGrid, row, col)
+    get_next_move(self, myGrid, row, col)
 
 
 def print_grid_coord(myGrid, myRow, myCol):
