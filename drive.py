@@ -7,7 +7,7 @@ Authors:
     - Katie Prochilo
     - Jason Fazio
     - Brandon Campbell
-	- Joe Hammer
+    - Joe Hammer
 
 TODO:
     - Create the following functions:
