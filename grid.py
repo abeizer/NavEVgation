@@ -101,7 +101,7 @@ class Grid:
         return viable_squares[0].row, viable_squares[0].column
 
 
-    # Function for determining orientation
+    # Function for determining orientation by Stephen MacDonald
     def orientaion(self, front_color):
         orientation = "UP" # random starting string direction to give it
         if len(self.viable_squares) == 0:
