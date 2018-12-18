@@ -53,6 +53,12 @@ def print_init_grid_probs(myGrid):
     print()
 
 
+def reorient(direction): # takes in a direction as a string and reorients the robot to that direction (hopefully)
+    current = grid.orientation(sense.get_front_enum())
+    while (current != direction):
+        drive.turn_right()
+        current = grid.orientation(sense.get_front_enum())
+
 def navigate_to_white(myGrid):
     """
     This function will walk through a sample run of the
