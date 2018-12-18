@@ -9,8 +9,8 @@ from enum import Enum
 
 
 class Color(Enum):
-    BLACK = 0
-    BLACK = 1
+    Black = 0
+    NO COLOR = 1
     BLUE = 2
     GREEN = 3
     RED = 5
