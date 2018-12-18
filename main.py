@@ -60,8 +60,8 @@ def navigate_to_white(self, myGrid):
     Authors: Katie Prochilo
     """
     # Get the current values the color sensor sees
-    front_val = 0
-    back_val = 0
+    front_val = get_rgb(sensor)
+    back_val = get_rgb()
     # Get the best guess of the robot's starting position as row, col
     start_row, start_col = myGrid.determine_starting_position(self, front_val, back_val)
 
@@ -80,14 +80,11 @@ def navigate_to_white(self, myGrid):
 
 def get_next_move(self, myGrid, row, col):
     """
-    TODO: Eventually it will actually call the drive
-    function rather than printing. To do this, the robot needs to know its orientation.
-
-    Before this function is called, the program will have a
+    Before this function is called the first time, the program will have a
     single square where it thinks it is most likely to be.
 
     The function will print the grid using print_grid_options()
-    before also printing the next move, i.e. "Go left."
+    before also printing and executing the next move, i.e. "Go left."
 
     The END square is hard coded at coordinate (2,2)
 
